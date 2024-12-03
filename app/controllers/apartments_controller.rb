@@ -5,13 +5,17 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
-
     if @apartment.save
       redirect_to @apartment, notice: 'Apartment was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
+  end
 
+  def destroy
+    @apartment = Apartment.find(params[:id])
+    @apartment.destroy
+    redirect_to apartments_path, status: :see_other
   end
 
   private
