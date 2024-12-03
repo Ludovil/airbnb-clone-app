@@ -1,0 +1,7 @@
+<div class="container">
+  <h1><%=@apartment.title%></h1>
+  <%= image_tag(@apartment.photos, alt: "Apartment photo", width: 500) %><br>
+  <p><%=@apartment.description %></p>
+  <%=link_to "book", apartments_path, class: "btn btn-primary" %>
+  <%= link_to 'Back to Apartments', apartments_path, class: "btn btn-primary" %>
+</div>
