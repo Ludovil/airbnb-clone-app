@@ -1,0 +1,9 @@
+<h1><%= @apartment.title %></h1>
+<p><%= @apartment.description %></p>
+<p>Price per night: $<%= @apartment.price_per_night %></p>
+
+<% if @apartment.photo.attached? %>
+  <%= image_tag @apartment.photo, style: "max-width: 300px; height: auto;" %>
+<% else %>
+  <p>No photo uploaded.</p>
+<% end %>
