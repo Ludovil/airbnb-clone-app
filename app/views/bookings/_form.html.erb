@@ -1,0 +1,5 @@
+<%= simple_form_for([@apartment, @booking]) do |f| %>
+  <%= f.input :start_date, as: :date, label: "From" %>
+  <%= f.input :end_date, as: :date, label: "To" %>
+  <%= f.submit "Confirm", class: "btn btn-primary" %>
+<% end %>
