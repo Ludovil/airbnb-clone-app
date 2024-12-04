@@ -19,7 +19,14 @@
     <% @apartments.each do |apartment| %>
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="<%= apartment.photos %>" class="card-img-top" alt="<%= apartment.address %>">
+          <%# <img src="<%= @apartment.photos %> <%#" class="card-img-top" alt="<%= apartment.address %>
+
+        <% if apartment.photos.attached? %>
+          <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
+        <% else %>
+          <p>No photos uploaded.</p>
+        <% end %>
+
           <div class="card-body">
             <h5 class="card-title"><%= apartment.address %></h5>
             <%# <p class="card-text">From $<%= apartment.price> per night</p> %>
