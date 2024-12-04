@@ -22,7 +22,7 @@
           <img src="<%= apartment.photos %>" class="card-img-top" alt="<%= apartment.address %>">
           <div class="card-body">
             <h5 class="card-title"><%= apartment.address %></h5>
-            <p class="card-text">From $<%= apartment.price_per_night %> per night</p>
+            <%# <p class="card-text">From $<%= apartment.price> per night</p> %>
             <%= link_to 'View Details', apartment_path(apartment), class: 'btn btn-primary' %>
           </div>
         </div>
