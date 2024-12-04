@@ -1,7 +1,39 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="hero-section" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkOtfeyr8AAXyZXPktqGCvguSJQ3oqsy1sJw&s');">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <h1 class="display-4 text-white">Find Your Next Stay</h1>
+        <p class="lead text-white">Discover thousands of places to stay around the world</p>
+        <%= form_with url: apartments_path, method: :get, local: true, class: "d-flex justify-content-center" do |form| %>
+          <%= form.text_field :location, class: "form-control form-control-lg", placeholder: "Enter a city or destination" %>
+          <%= form.submit "Search", class: "btn btn-primary ml-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<%if user_signed_in?%>
-<p>Welcome <%=current_user.first_name%></p>
-<%end%>
+<section class="container my-5">
+  <h2 class="text-center">Popular Destinations</h2>
+  <div class="row">
+    <% @apartments.each do |apartment| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="<%= apartment.photos %>" class="card-img-top" alt="<%= apartment.address %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= apartment.address %></h5>
+            <p class="card-text">From $<%= apartment.price_per_night %> per night</p>
+            <%= link_to 'View Details', apartment_path(apartment), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+<section class="cta-section bg-dark text-white py-5">
+  <div class="container text-center">
+    <h2 class="display-4">Ready to List Your Space?</h2>
+    <p>Join thousands of hosts and start earning today.</p>
+    <%= link_to 'Become a Host', new_apartment_path, class: 'btn btn-light' %>
+  </div>
+</section>
