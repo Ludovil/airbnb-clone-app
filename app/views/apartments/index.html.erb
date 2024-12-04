@@ -1,6 +1,7 @@
 
 <ul>
-  <% @apartments.each do|apartment|%>
-  <li><%=apartment.address%></li>
+ <p><% @apartments.each do |apartment|%>
+  <%=apartment.address%><br />
+  <%="Availability: #{apartment.availability}"%></p>
   <%end%>
 </ul>
