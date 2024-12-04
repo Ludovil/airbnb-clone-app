@@ -4,11 +4,10 @@
   <ul class="list-group list-group-horizontal">
     <% @apartments.each do|apartment|%>
     <li class="list-group-item mx-3"><%=apartment.title%><br>
-    <%= image_tag(apartment.photos, alt: "Apartment photo", width: 300) %><br>
+    <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
     <%=apartment.address%><br>
     <%=link_to "see apartment", apartment_path(apartment), class: "btn btn-primary" %>
     </li>
     <%end%>
   </ul>
 </div>
-

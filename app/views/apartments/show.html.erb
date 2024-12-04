@@ -1,9 +1,15 @@
 <div class="container">
-  <h1><%=@apartment.title%></h1>
-  <%= image_tag(@apartment.photos, alt: "Apartment photo", width: 500) %><br>
-  <p><%=@apartment.description %></p>
-  <p>Price per night: $<%= @apartment.price_per_night %></p>
-  <%=link_to "book", apartments_path, class: "btn btn-primary" %>
-  <%= link_to 'Back to Apartments', apartments_path, class: "btn btn-primary" %>
-</div>
+  <h1><%= @apartment.title || "No title provided" %></h1>
 
+  <% if @apartment.photos.attached? %>
+    <% @apartment.photos.each do |photo| %>
+      <%= image_tag photo, alt: "Apartment photo", width: 500 %>
+    <% end %>
+  <% else %>
+    <p>No photos uploaded.</p>
+  <% end %>
+
+  <p><%= @apartment.description || "No description available" %></p>
+  <p>Price per night: $<%= @apartment.price_per_night || "N/A" %></p>
+  <%= link_to "Book", apartments_path, class: "btn btn-primary" %>
+</div>
