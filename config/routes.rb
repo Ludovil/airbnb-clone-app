@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  resource :profile, only: [:show, :edit, :update]
+  devise_for :users 
+
   get 'bookings/new'
   get 'bookings/create'
   get 'bookings/show'
