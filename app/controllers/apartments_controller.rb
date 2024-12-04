@@ -1,6 +1,5 @@
 class ApartmentsController < ApplicationController
 
-
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
@@ -15,12 +14,12 @@ class ApartmentsController < ApplicationController
   def new
     @apartment = Apartment.new
   end
-  
+
   def create
     @apartment = Apartment.new(apartment_params)
 
     @apartment.user = current_user
-    
+
     if @apartment.save
       redirect_to @apartment, notice: 'Apartment was successfully created.'
     else
