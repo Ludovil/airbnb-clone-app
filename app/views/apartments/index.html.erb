@@ -2,12 +2,19 @@
   <h1>Apartments</h1>
 
   <ul class="list-group list-group-horizontal">
-    <% @apartments.each do|apartment|%>
-    <li class="list-group-item mx-3"><%=apartment.title%><br>
-    <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
-    <%=apartment.address%><br>
-    <%=link_to "see apartment", apartment_path(apartment), class: "btn btn-primary" %>
-    </li>
-    <%end%>
+    <% @apartments.each do |apartment| %>
+      <li class="list-group-item mx-3">
+        <%= apartment.title %><br>
+
+        <% if apartment.photos.attached? %>
+          <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
+        <% else %>
+          <p>No photos uploaded.</p>
+        <% end %>
+
+        <%= apartment.address %><br>
+        <%= link_to "see apartment", apartment_path(apartment), class: "btn btn-primary" %>
+      </li>
+    <% end %>
   </ul>
 </div>
