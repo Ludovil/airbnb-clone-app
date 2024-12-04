@@ -4,7 +4,13 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = Apartment.all
-
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @apartments.geocoded.map do |apartment|
+      {
+        lat: apartment.latitude,
+        lng: apartment.longitude
+      }
+    end
   end
 
   def show
