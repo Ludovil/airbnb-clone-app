@@ -1,5 +1,14 @@
-<ul>
- # <% @apartments.each do |apartment|%>
-  <li><%=apartment.address%></li>
-  <%end%>
-</ul>
+<div class="container">
+  <h1>Apartments</h1>
+
+  <ul class="list-group list-group-horizontal">
+    <% @apartments.each do|apartment|%>
+    <li class="list-group-item mx-3"><%=apartment.title%><br>
+    <%= image_tag(apartment.photos, alt: "Apartment photo", width: 300) %><br>
+    <%=apartment.address%><br>
+    <%=link_to "see apartment", apartment_path(apartment), class: "btn btn-primary" %>
+    </li>
+    <%end%>
+  </ul>
+</div>
+
