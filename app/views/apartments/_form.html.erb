@@ -1,0 +1,26 @@
+<%= simple_form_for @apartment, html: { multipart: true } do |f| %>
+  <% if @apartment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apartment.errors.count, "error") %> This apartment cannot be saved:</h2>
+      <ul>
+        <% @apartment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :title, label: "Title", placeholder: "Enter the title of the apartment" %>
+  <%= f.input :description, as: :text, label: "Description", placeholder: "Enter a brief description" %>
+  <%# <%= f.input :address, label: "Address", placeholder: "Enter the address" %>
+  <%= f.input :address,
+  input_html: {data: {address_autocomplete_target: "address"}}, # , class: "d-none"
+  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+  %>
+  <%= f.input :price_per_night, as: :integer, label: "Price per night (€)", placeholder: "Enter the price" %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Upload Photos" %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create Apartment", class: "btn btn-primary" %>
+  </div>
+<% end %>
