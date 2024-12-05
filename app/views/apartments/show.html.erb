@@ -1,16 +1,25 @@
 <div class="container">
-  <h1><%=@apartment.title%></h1>
-  <%# <%= image_tag(@apartment.photos, alt: "Apartment photo", width: 500) %>
-  <% if @apartment.photos.attached? %>
-    <% @apartment.photos.each do |photo| %>
-      <%= image_tag photo, alt: "Apartment photo", width: 500 %>
-    <% end %>
-  <% else %>
-    <p>No photos uploaded.</p>
+  <h1><%= @apartment.title %></h1>
+<div id="carouselExampleFade" class="carousel slide carousel-fade custom-carousel">
+<div class="carousel-inner">
+  <% @apartment.photos.each_with_index do |photo, index| %>
+    <div class="carousel-item <%= 'active' if index == 0 %>">
+      <%= image_tag photo, class: "d-block w-100", alt: "Apartment photo" %>
+    </div>
   <% end %>
-  <p><%=@apartment.description %></p>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+  <p><%= @apartment.description %></p>
   <p>Price per night: $<%= @apartment.price_per_night %></p>
-  <%=link_to "book", new_apartment_booking_path(@apartment), class: "btn btn-primary" %>
+  <!-- Render booking form partial -->
+  <%= render 'bookings/form', booking: @booking, apartment: @apartment %>
   <%= link_to 'Back to Apartments', apartments_path, class: "btn btn-primary" %>
-
 </div>

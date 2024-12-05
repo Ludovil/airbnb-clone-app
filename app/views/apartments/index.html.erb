@@ -1,6 +1,4 @@
 <div class="container">
-  <h1>Apartments</h1>
-
   <%# Search bar %>
 
   <div class="row justify-content-center">
@@ -18,19 +16,17 @@
 
 <%# Mapbox %>
 
-<%= @markers.to_json %>
-
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<%#  %>
-  <ul class="list-group list-group-horizontal">
-    <% @apartments.each do |apartment| %>
-      <li class="list-group-item mx-3">
-        <%= apartment.title %><br>
+  <div class="row">
+    <% @apartments.geocoded.each do |apartment| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <%# <img src="<%= @apartment.photos %> <%#" class="card-img-top" alt="<%= apartment.address %>
 
         <% if apartment.photos.attached? %>
           <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
@@ -38,9 +34,14 @@
           <p>No photos uploaded.</p>
         <% end %>
 
-        <%= apartment.address %><br>
-        <%= link_to "see apartment", apartment_path(apartment), class: "btn btn-primary" %>
-      </li>
+          <div class="card-body">
+            <h5 class="card-title"><%= apartment.address %></h5>
+            <%# <p class="card-text">From $<%= apartment.price> per night</p> %>
+            <%= link_to 'View Details', apartment_path(apartment), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
+
 </div>
