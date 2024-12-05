@@ -1,6 +1,7 @@
 class ApartmentsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_apartment, only: [:destroy]
 
   def index
     @apartments = Apartment.all
@@ -48,6 +49,6 @@ class ApartmentsController < ApplicationController
   private
 
   def apartment_params
-    params.require(:apartment).permit(:address, :availability, :price_per_night, :user_id, photos: [])
+    params.require(:apartment).permit(:address, :availability, :price_per_night, :user_id, :description, :title, photos: [])
   end
 end
