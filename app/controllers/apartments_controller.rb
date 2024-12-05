@@ -8,7 +8,8 @@ class ApartmentsController < ApplicationController
     @markers = @apartments.geocoded.map do |apartment|
       {
         lat: apartment.latitude,
-        lng: apartment.longitude
+        lng: apartment.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {apartment: apartment})
       }
     end
   end
