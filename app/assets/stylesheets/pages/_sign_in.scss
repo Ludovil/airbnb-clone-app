@@ -1,0 +1,59 @@
+.hero-section {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 100px 0;
+}
+
+.card {
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h1 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.card p {
+  font-family: sans-serif;
+  color: #6c757d;
+}
+
+.btn-primary {
+  background-color: rgb(161, 86, 15);
+  border-color: rgb(161, 86, 15);
+}
+
+.btn-primary:hover {
+  background-color: rgb(180, 100, 20);
+  border-color: rgb(180, 100, 20);
+}
+
+.card .form-control {
+  border-radius: 50px; /* Adjust the value for roundness */
+  padding: 10px 20px;  /* Add some padding for better aesthetics */
+  border: 1px solid #ddd; /* Optional: Adjust border style */
+}
+
+.card .form-control:hover {
+  border-color: rgba(161, 86, 15, 0.8);
+  box-shadow: 0 0 5px rgba(161, 86, 15, 0.2);
+}
+
+.card .form-control:focus {
+  outline: none; /* Remove default outline */
+  border-color: #a1560f; /* Add a focused border color */
+  box-shadow: 0 0 5px rgba(161, 86, 15, 0.5); /* Add a subtle glow effect */
+}
+
+.card .btn-primary {
+  border-radius: 50px;
+  background-color: rgb(161, 86, 15);
+  border: none;
+  padding: 10px 20px;
+}
+
+.card .btn-primary:hover {
+  background-color: rgb(180, 100, 20);
+}
