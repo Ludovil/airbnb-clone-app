@@ -1,1 +1,38 @@
 // Specific CSS for your home-page
+.hero-section {
+  background-image: url("https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+  background-size: cover;
+  padding:60px;
+  margin: 0px 50px;
+  background-color: rgba(42, 42, 42, 0.5);
+}
+
+.hero-section .form-control {
+  border-radius : 20px 0px 0px 20px;
+}
+
+.hero-section .btn {
+  border-radius: 0px 20px 20px 0px;
+  background-color:rgb(161, 86, 15);
+  border-color: rgb(161, 86, 15);
+}
+
+.container .btn-primary {
+  background-color: rgb(161, 86, 15);
+  border-color: rgb(161, 86, 15);
+  border-radius: 20px 20px 20px 20px;
+}
+
+ h1 {
+  font-family: 'Times New Roman', Times, serif;
+ }
+h2 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+ p {
+  font-family: sans-serif;
+ }
