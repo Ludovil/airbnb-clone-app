@@ -3,6 +3,9 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user  # Fetch the current logged-in user
+    @upcoming_bookings = current_user.bookings.where('start_date > ?', Time.now).order(:start_date)
+    @previous_bookings = current_user.bookings.where('end_date < ?', Time.now).order(end_date: :desc)
+    @listed_apartments = current_user.apartments.reverse
   end
 
   def edit

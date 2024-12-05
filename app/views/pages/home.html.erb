@@ -4,10 +4,18 @@
       <div class="col-md-8 text-center">
         <h1 class="display-4 text-white">Effortless booking for </br> <i>exceptional</i> stays.</h1>
         <p class="lead text-white">Discover thousands of places to stay around the world</p>
-        <%= form_with url: apartments_path, method: :get, local: true, class: "d-flex justify-content-center" do |form| %>
-          <%= form.text_field :location, class: "form-control form-control-lg", placeholder: "Enter a city or destination" %>
-          <%= form.submit "Search", class: "btn btn-primary ml-2" %>
-        <% end %>
+        <div class="row justify-content-center">
+        <div class="col-sm-8 my-3">
+          <%= form_with url: apartments_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Type a keyword"
+              %>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
       </div>
     </div>
   </div>
