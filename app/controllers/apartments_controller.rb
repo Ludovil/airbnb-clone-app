@@ -5,7 +5,10 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = Apartment.all
-    # The `geocoded` scope filters only flats with coordinates
+    if params[:query].present?
+      @apartments = Apartment.where("address ILIKE ?", "%#{params[:query]}%")
+    end
+
     @markers = @apartments.geocoded.map do |apartment|
       {
         lat: apartment.latitude,
