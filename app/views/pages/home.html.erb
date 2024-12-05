@@ -6,7 +6,7 @@
         <p class="lead text-white">Discover thousands of places to stay around the world</p>
         <div class="row justify-content-center">
         <div class="col-sm-8 my-3">
-          <%= form_with url: apartments_path, method: :get, class: "input-group" do %>
+          <%= form_with url: apartments_path, method: :get,class: "input-group" do %>
             <%= text_field_tag :query,
                   params[:query],
                   class: "form-control",
