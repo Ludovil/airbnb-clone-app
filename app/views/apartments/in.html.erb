@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>Apartments</h1>
+
+  <!-- Search Bar -->
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: apartments_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a keyword" %>
+        <%= button_tag "Search", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#mapModal" } %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Apartments List -->
+  <ul class="list-group list-group-horizontal">
+    <% @apartments.each do |apartment| %>
+      <li class="list-group-item mx-3">
+        <%= apartment.title %><br>
+
+        <% if apartment.photos.attached? %>
+          <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
+        <% else %>
+          <p>No photos uploaded.</p>
+        <% end %>
+
+        <%= apartment.address %><br>
+        <%= link_to "see apartment", apartment_path(apartment), class: "btn btn-primary" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Modal pour afficher la carte -->
+<div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mapModalLabel">Search Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Mapbox -->
+        <div id="map" style="width: 100%; height: 500px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
