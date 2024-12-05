@@ -10,9 +10,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to apartment_path(@apartment), notice: "Booking done."
+      redirect_to profile_path, notice: "Booking requested!"
     else
-      render :new, status: :unprocessable_entity
+       redirect_to apartment_path(@apartment), alert: 'Unable to create booking. Check your dates.'
     end
   end
 
@@ -20,6 +20,17 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+
+    if @booking.apartment.user == current_user
+      @booking.update(status: params[:status])
+      redirect_to dashboard_path, notice: "Booking #{params[:status]}!"
+    else
+      redirect_to dashboard_path, alert: 'You are not authorized to perform this action.'
+    end
   end
 
   private
