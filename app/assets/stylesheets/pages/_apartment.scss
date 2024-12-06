@@ -1,0 +1,139 @@
+$primary-color: #a1560f;
+$background-overlay: rgba(42, 42, 42, 0.15);
+$white: #fff;
+$black: #000; /* Couleur du texte en noir */
+$gray-light: #f7f7f7;
+$border-radius: 12px;
+$btn-hover-color: rgba(161, 86, 15, 0.8);
+$shadow-color: rgba(0, 0, 0, 0.1);
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+$font-primary: "Arial", sans-serif;
+
+@mixin rounded($radius) {
+  border-radius: $radius;
+}
+
+.container.apartment-show {
+  background-color: $background-overlay;
+  color: $black; /* Texte en noir */
+  padding: 60px 20px;
+  @include rounded($border-radius);
+  box-shadow: $box-shadow;
+
+  h1 {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 600;
+    text-align: center;
+    color: $black; /* Titre en noir */
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  // Carousel section
+  .carousel-inner {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .carousel-item {
+    img {
+      @include rounded(12px);
+      object-fit: cover;
+      max-height: 400px;
+    }
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  .apartment-info {
+    text-align: center;
+    font-family: $font-primary;
+    margin-top: 40px;
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: $black; /* Texte en noir */
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: $white; /* Fond blanc */
+      padding: 15px;
+      @include rounded(8px);
+    }
+
+    .booking-form {
+      margin-top: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: $white; /* Fond blanc pour le formulaire */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: $box-shadow; /* Ombre légère pour donner un effet de profondeur */
+    }
+  }
+
+  // Style du bouton "Book Now" - plus gros et épuré
+  .btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    padding: 16px 30px;
+    font-size: 1.4rem;
+    @include rounded(30px);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: $btn-hover-color;
+      border-color: $btn-hover-color;
+    }
+  }
+
+  // Style du bouton "Back"
+  .back-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .btn-back {
+    display: inline-block;
+    width: 200px;
+    background-color: transparent;
+    color: $primary-color;
+    border: 2px solid $primary-color;
+    padding: 8px 16px;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    @include rounded(30px);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background-color: $primary-color;
+      color: $white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .price {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+    color: $black; /* Texte en noir */
+    background-color: $white; /* Fond blanc */
+    padding: 15px;
+    @include rounded(15px);
+    box-shadow: $box-shadow; /* Ombre légère pour donner un effet de profondeur */
+  }
+}
