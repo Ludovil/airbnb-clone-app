@@ -27,11 +27,13 @@
     <p><strong>Description:</strong> <%= @apartment.description %></p>
     <p><strong>Price per night:</strong> $<%= @apartment.price_per_night %></p>
 
-    <!-- Booking Form -->
-    <div class="booking-form">
-      <%= render 'bookings/form', booking: @booking, apartment: @apartment %>
-    </div>
+<!-- Booking Form -->
+<% if user_signed_in? && @apartment.user != current_user %>
+  <div class="booking-form">
+    <%= render 'bookings/form', booking: @booking, apartment: @apartment %>
   </div>
+<% end %>
+
 
   <!-- Back Button Wrapped in Flexbox -->
   <div class="back-btn-container">
