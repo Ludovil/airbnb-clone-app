@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:accept, :reject]
+
   def new
     @apartment = Apartment.find(params[:apartment_id])
     @booking = @apartment.bookings.new
@@ -10,9 +12,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to apartment_path(@apartment), notice: "Booking done."
+      redirect_to profile_path, notice: "Booking requested!"
     else
-      render :new, status: :unprocessable_entity
+       redirect_to apartment_path(@apartment), alert: 'Unable to create booking. The apartment is not available for these dates.'
     end
   end
 
@@ -22,10 +24,43 @@ class BookingsController < ApplicationController
   def destroy
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+
+    if @booking.apartment.user == current_user
+      @booking.update(status: params[:status])
+      redirect_to dashboard_path, notice: "Booking #{params[:status]}!"
+    else
+      redirect_to dashboard_path, alert: 'You are not authorized to perform this action.'
+    end
+  end
+
+  def accept
+    if @booking.apartment.user == current_user
+      @booking.update(status: 'accepted')
+      redirect_to profile_path, notice: 'Booking accepted!'
+    else
+      redirect_to profile_path, alert: 'You are not the host of this apartment.'
+    end
+  end
+
+  def reject
+    if @booking.apartment.user == current_user
+      @booking.update(status: 'rejected')
+      redirect_to profile_path, notice: 'Booking rejected!'
+    else
+      redirect_to profile_path, alert: 'You are not the host of this apartment.'
+    end
+  end
+
   private
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
 end

@@ -29,6 +29,7 @@
   border-radius: 0px 20px 20px 0px;
 }
 
+
 .word-highlight{
   color: rgb(189, 166, 144);
   border-radius: 20px 20px 20px 20px;
@@ -46,10 +47,31 @@ p {
   font-family: sans-serif;
 }
 
+
  .custom-cta-section {
   background-color: rgb(164, 137, 111);
  }
 .card-content{
   align-items: center;
   padding:20px;
+
+.opacity {
+  opacity: 0.8;
+}
+
+.opacity:hover {
+  opacity: 1;
+  color: white;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid rgb(161, 86, 15);
+  color: grey;
+}
+
+.transparent:hover {
+  background-color: rgb(161, 86, 15);
+  color: white;
+
 }
