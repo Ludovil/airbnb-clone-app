@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
 
-  resource :profile, only: [:show, :edit, :update]
-
-  get 'bookings/new'
-  get 'bookings/create'
-  get 'bookings/show'
-  get 'bookings/destroy'
   devise_for :users
 
   root to: "pages#home"
+
+  resource :profile, only: [:show, :edit, :update]
 
 
   resources :apartments, only: [:index, :new, :create, :show] do
     resources :bookings, only: [:new, :create, :show, :destroy]
   end
 
+
+  patch "/bookings/:id/accept", to: "bookings#accept", as: :accept_booking
+  patch "/bookings/:id/reject", to: "bookings#reject", as: :reject_booking
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

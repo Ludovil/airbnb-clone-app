@@ -1,13 +1,14 @@
 // Specific CSS for your home-page
 .hero-section {
-  background-image: url("https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50px;
   background-size: cover;
   padding: 60px;
   margin: 0px 50px;
-  background-color: rgba(42, 42, 42, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
   border-radius: 30px;
 }
 
@@ -28,20 +29,49 @@
   border-radius: 0px 20px 20px 0px;
 }
 
-.word-highlight{
-  color: rgb(161, 86, 15);
-  border-radius: 20px 20px 20px 20px;
-  opacity: 0.8;
 
+.word-highlight{
+  color: rgb(189, 166, 144);
+  border-radius: 20px 20px 20px 20px;
 }
 
 h1 {
   font-family: "Times New Roman", Times, serif;
 }
+
 h2 {
   font-family: "Times New Roman", Times, serif;
 }
 
 p {
   font-family: sans-serif;
+}
+
+
+ .custom-cta-section {
+  background-color: rgb(164, 137, 111);
+ }
+.card-content{
+  align-items: center;
+  padding:20px;
+
+.opacity {
+  opacity: 0.8;
+}
+
+.opacity:hover {
+  opacity: 1;
+  color: white;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid rgb(161, 86, 15);
+  color: grey;
+}
+
+.transparent:hover {
+  background-color: rgb(161, 86, 15);
+  color: white;
+
 }
