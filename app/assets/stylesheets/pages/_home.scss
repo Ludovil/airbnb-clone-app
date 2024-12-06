@@ -28,11 +28,10 @@
   border-radius: 0px 20px 20px 0px;
 }
 
-.word-highlight{
+.word-highlight {
   color: rgb(161, 86, 15);
   border-radius: 20px 20px 20px 20px;
   opacity: 0.8;
-
 }
 
 h1 {
@@ -44,4 +43,24 @@ h2 {
 
 p {
   font-family: sans-serif;
+}
+
+.opacity {
+  opacity: 0.8;
+}
+
+.opacity:hover {
+  opacity: 1;
+  color: white;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid rgb(161, 86, 15);
+  color: grey;
+}
+
+.transparent:hover {
+  background-color: rgb(161, 86, 15);
+  color: white;
 }

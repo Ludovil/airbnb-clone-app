@@ -17,27 +17,46 @@
 body {
   margin: 10px 50px;
   background-color: white;
+}
+// placeholder
 
-  // placeholder
+/* Pour tous les placeholders */
+::placeholder {
+  color: #888888; /* Couleur du placeholder */
+  font-size: 16px; /* Taille de la police */
+  font-style: italic; /* Style en italique */
+  opacity: 0.5; /* Transparence du texte */
+}
 
-  /* Pour tous les placeholders */
-  ::placeholder {
-    color: #888888; /* Couleur du placeholder */
-    font-size: 16px; /* Taille de la police */
-    font-style: italic; /* Style en italique */
-    opacity: 0.5; /* Transparence du texte */
-  }
+/* Pour cibler spécifiquement le placeholder du champ ayant la classe "form-control" */
+.form-control::placeholder {
+  color: #555555;
+  font-weight: bold;
+  opacity: 0.5;
+}
 
-  /* Pour cibler spécifiquement le placeholder du champ ayant la classe "form-control" */
-  .form-control::placeholder {
-    color: #555555;
-    font-weight: bold;
-    opacity: 0.5;
-  }
+.form-control {
+  font-family: $body-font; /* Change la police */
+  font-size: 18px; /* Taille de la police */
+  color: #333; /* Couleur du texte */
+}
+.dropdown-menu {
+  background-color: transparent !important; /* Fond noir */
+  border: none !important; /* Supprime les bordures */
+  box-shadow: none !important; /* Supprime l'ombre */
+}
+.dropdown-item {
+  color: #fff; /* Couleur du texte */
+  background-color: rgb(161, 86, 15); /* Couleur de fond */
+  text-align: center; /* Centrer le texte */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 10px; /* Ajout d'espace autour du texte */
+  opacity: 0.8;
+}
 
-  .form-control {
-    font-family: $body-font; /* Change la police */
-    font-size: 18px; /* Taille de la police */
-    color: #333; /* Couleur du texte */
-  }
+.dropdown-item:hover {
+  background-color: rgb(161, 86, 15); /* Couleur de fond au survol */
+  color: #ccc; /* Couleur du texte au survol */
+  text-decoration: none; /* Enlever le soulignement */
+  opacity: 1;
 }
