@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container apartment-show">
   <h1><%= @apartment.title %></h1>
 
-  <div id="carouselExampleFade" class="carousel slide carousel-fade custom-carousel">
+  <!-- Carousel Section -->
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
       <% @apartment.photos.each_with_index do |photo, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
@@ -9,6 +10,8 @@
         </div>
       <% end %>
     </div>
+
+    <!-- Carousel Controls -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -19,13 +22,19 @@
     </button>
   </div>
 
-  <p><%= @apartment.description %></p>
-  <p>Price per night: $<%= @apartment.price_per_night %></p>
+  <!-- Apartment Info Section -->
+  <div class="apartment-info">
+    <p><strong>Description:</strong> <%= @apartment.description %></p>
+    <p><strong>Price per night:</strong> $<%= @apartment.price_per_night %></p>
 
-  <!-- Render booking form partial -->
-  <%= render 'bookings/form', booking: @booking, apartment: @apartment %>
+    <!-- Booking Form -->
+    <div class="booking-form">
+      <%= render 'bookings/form', booking: @booking, apartment: @apartment %>
+    </div>
+  </div>
 
-
-  <!-- Buttons -->
-  <%= link_to 'Back to Apartments', "/", class: "btn btn-primary" %>
+  <!-- Back Button Wrapped in Flexbox -->
+  <div class="back-btn-container">
+    <%= link_to 'Back to Apartments', "/", class: "btn-back" %>
+  </div>
 </div>
