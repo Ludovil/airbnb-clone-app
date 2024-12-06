@@ -15,7 +15,7 @@
 }
 
 .hero-section .btn {
-  border-radius: 0px 20px 20px 0px;
+  border-radius: 20px 0px 0px 20px;
   background-color:rgb(161, 86, 15);
   border-color: rgb(161, 86, 15);
 }
@@ -23,7 +23,12 @@
 .container .btn-primary {
   background-color: rgb(161, 86, 15);
   border-color: rgb(161, 86, 15);
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 0px 20px 20px 0px;
+}
+
+
+.word-highlight{
+  color: rgb(161, 86, 15);
 }
 
  h1 {
