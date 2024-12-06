@@ -13,7 +13,7 @@ Booking.destroy_all
 Apartment.destroy_all
 User.destroy_all
 
-7.times do
+10.times do
   # Create a user
   user = User.create!(
     first_name: Faker::Name.first_name,
@@ -73,6 +73,11 @@ demo_previous_booking = Booking.create!(
   start_date: Date.today - 20,
   end_date: Date.today - 10
 )
+
+3.times do
+  downloaded_image = URI.open("https://source.unsplash.com/random/800x600/?apartment,house")
+  apartment.photos.attach(io: downloaded_image, filename: "apartment_#{apartment.id}_#{rand(1000)}.jpg")
+end
 
 puts "Demo data created successfully!"
 puts "Demo User: #{demo_user.email} / Password: 123456"

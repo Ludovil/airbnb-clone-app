@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8 text-center">
         <h1 class="display-4 text-white">Effortless booking for </br> <i><span class="word-highlight">exceptional</span></i> stays.</h1>
-        <p class="lead text-white">Discover thousands of places to stay around the world</p>
+        <p class="lead text-white">Discover thousands of places to stay around Europe</p>
         <div class="row justify-content-center">
         <div class="col-sm-8 my-3">
           <%= form_with url: apartments_path, method: :get,class: "input-group" do %>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="col-5">
-      <img src="https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg" alt="voyage avec Nestaway" class="img-fluid rounded presentation-img">
+      <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" alt="voyage avec Nestaway" class="img-fluid rounded presentation-img">
     </div>
   </div>
 </div>
@@ -44,27 +44,30 @@
     <% @apartments.each do |apartment| %>
       <div class="col-md-4 mb-4">
         <div class="card">
-          <%# <img src="<%= @apartment.photos %> <%#" class="card-img-top" alt="<%= apartment.address %>
-
-        <% if apartment.photos.attached? %>
-          <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
-        <% else %>
-          <p>No photos uploaded.</p>
-        <% end %>
-
+          <div class="card-content">
+          <div class="card-photo">
+          <% if apartment.photos.attached? %>
+            <%= link_to apartment_path(apartment) do %>
+              <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
+            <% end %>
+          <% else %>
+            <p>No photos uploaded.</p>
+          <% end %>
+          </div>
           <div class="card-body">
             <h5 class="card-title"><%= apartment.address %></h5>
-            <%# <p class="card-text">From $<%= apartment.price> per night</p> %>
-            <%= link_to 'View Details', apartment_path(apartment), class: 'btn btn-primary' %>
           </div>
+          </div>
+            <%# <p class="card-text">From $<%= apartment.price> per night</p> %>
         </div>
       </div>
     <% end %>
   </div>
 </section>
-<section class="cta-section bg-dark text-white py-5">
+
+<section class="cta-section custom-cta-section text-white py-5">
   <div class="container text-center">
-    <h2 class="display-4">Ready to List Your Space?</h2>
+    <h2 class="display-4">Looking to list one apartment?</h2>
     <p>Join thousands of hosts and start earning today.</p>
     <%= link_to 'Become a Host', new_apartment_path, class: 'btn btn-light' %>
   </div>
