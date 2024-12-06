@@ -1,0 +1,49 @@
+.alert {
+  display: flex; /* Makes the alert content flexbox for alignment */
+  justify-content: space-between; /* Ensures message and close button are on opposite ends */
+  align-items: center; /* Vertically aligns the elements */
+  padding: 15px 20px;
+  border-radius: 10px;
+  gap: 10px; /* Adds space between items */
+  background-color: #bceea1; /* Example background for success */
+  color: #333; /* Text color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0.9; /* Decrease opacity for all alerts */
+  animation: fadeOut 5s ease-in-out forwards; /* Trigger the fadeOut animation */
+  transition: opacity 0.3s ease-in-out;
+
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px); /* Optional: slight upward motion */
+  }
+}
+
+.alert-message {
+  flex-grow: 1; /* Allows the message to take up available space */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px; /* Space from the message */
+  line-height: 1;
+}
+
+.alert-success {
+  background-color: rgba(212, 237, 218, 0.8); /* Light green with reduced opacity */
+  color: #155724; /* Dark green text */
+  border: 1px solid rgba(195, 230, 203, 0.8); /* Slightly darker border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}

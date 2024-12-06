@@ -1,0 +1,9 @@
+footer {
+  padding-top: 20px; // Adds space between the top of the footer and the text.
+  padding-bottom: 20px; // Optional, to add symmetry.
+
+  // You can also target specific sections inside the footer
+  section {
+    margin-top: 10px; // Adds extra space if needed inside the footer section.
+  }
+}
