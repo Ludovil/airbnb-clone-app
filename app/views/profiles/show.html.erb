@@ -1,129 +1,129 @@
-<h1 class="text-center mb-4">Welcome <%=current_user.first_name%></h1>
+
 
 <div class="container">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Your personal informations</h5>
-      <p class="card-text"><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
-      <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+  <h1 class="text-start">Welcome <%=current_user.first_name%> <%=current_user.last_name%></h1>
 
-      <%= link_to 'Edit Profile', edit_profile_path, class: 'btn btn-primary' %>
-      <%= link_to 'Add New Apartment', new_apartment_path, class: 'btn btn-success ml-2' %>
-    </div>
-  </div>
 
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">Upcoming Bookings</h5>
-      <% if @upcoming_bookings.any? %>
-        <ul class="list-group">
-          <% @upcoming_bookings.each do |booking| %>
-            <li class="list-group-item">
-              <strong>Apartment:</strong> <%= booking.apartment.title %><br>
-              <strong>Address:</strong> <%= booking.apartment.address %><br>
-              <strong>Start Date:</strong> <%= booking.start_date.strftime('%d %B %Y') %><br>
-              <strong>End Date:</strong> <%= booking.end_date.strftime('%d %B %Y') %><br>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No upcoming bookings. Check out <%= link_to 'available apartments', apartments_path %>!</p>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">Previous Bookings</h5>
-      <% if @previous_bookings.any? %>
-        <ul class="list-group">
-          <% @previous_bookings.each do |booking| %>
-            <li class="list-group-item">
-              <strong>Apartment:</strong> <%= booking.apartment.title %><br>
-              <strong>Address:</strong> <%= booking.apartment.address %><br>
-              <strong>Start Date:</strong> <%= booking.start_date.strftime('%d %B %Y') %><br>
-              <strong>End Date:</strong> <%= booking.end_date.strftime('%d %B %Y') %><br>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No previous bookings.</p>
-      <% end %>
-    </div>
-  </div>
+        <div class="profile-box">
+          <h5 class="">Your personal informations</h5>
+          <p class=""><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
+          <p class=""><strong>Email:</strong> <%= @user.email %></p>
+          <%= link_to 'Edit Profile', edit_profile_path, class: 'btn transparent' %>
+          <%= link_to 'Add New Apartment', new_apartment_path, class: 'btn transparent' %>
+        </div>
 
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">Listed Flats</h5>
-      <% if @listed_apartments.any? %>
-        <ul class="list-group">
-          <% @listed_apartments.each do |apartment| %>
-            <li class="list-group-item">
-              <strong>Title:</strong> <%= apartment.title %><br>
-              <strong>Address:</strong> <%= apartment.address %><br>
-              <%= link_to 'View Apartment', apartment_path(apartment), class: 'btn btn-secondary' %>
-              <%= link_to 'Delete Apartment', apartment_path(apartment),
-                method: :delete,
-                data: { confirm: 'Are you sure you want to delete this apartment?' },
-                class: "btn btn-danger mt-3" %>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No listed flats at the moment.</p>
-      <% end %>
-    </div>
-  </div>
+
+      <div class="profile-box">
+        <h5 class="">Upcoming Bookings</h5>
+        <% if @upcoming_bookings.any? %>
+          <ul class="list-group">
+            <% @upcoming_bookings.each do |booking| %>
+              <li class="list-group-item">
+                <strong>Apartment:</strong> <%= booking.apartment.title %><br>
+                <strong>Address:</strong> <%= booking.apartment.address %><br>
+                <strong>Start Date:</strong> <%= booking.start_date.strftime('%d %B %Y') %><br>
+                <strong>End Date:</strong> <%= booking.end_date.strftime('%d %B %Y') %><br>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No upcoming bookings. Check out <%= link_to 'available apartments', apartments_path %>!</p>
+        <% end %>
+      </div>
+
+
+
+      <div class="profile-box">
+        <h5 class="">Previous Bookings</h5>
+        <% if @previous_bookings.any? %>
+          <ul class="list-group">
+            <% @previous_bookings.each do |booking| %>
+              <li class="list-group-item">
+                <strong>Apartment:</strong> <%= booking.apartment.title %><br>
+                <strong>Address:</strong> <%= booking.apartment.address %><br>
+                <strong>Start Date:</strong> <%= booking.start_date.strftime('%d %B %Y') %><br>
+                <strong>End Date:</strong> <%= booking.end_date.strftime('%d %B %Y') %><br>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No previous bookings.</p>
+        <% end %>
+      </div>
+
+
+
+      <div class="profile-box">
+        <h5 class="">Listed Flats</h5>
+        <% if @listed_apartments.any? %>
+          <ul class="list-group">
+            <% @listed_apartments.each do |apartment| %>
+              <li class="list-group-item mb-3">
+                <strong>Title:</strong> <%= apartment.title %><br>
+                <strong>Address:</strong> <%= apartment.address %><br>
+                <div class="profile-apartment">
+                  <%= link_to 'View Apartment', apartment_path(apartment), class: 'btn transparent' %>
+                  <%# <%= link_to 'Delete Apartment', apartment_path(apartment),
+                    method: :delete,
+                    data: { confirm: 'Are you sure you want to delete this apartment?' },
+                    class: 'btn transparent' %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No listed flats at the moment.</p>
+        <% end %>
+      </div>
+
   <!-- Booking Requests Section -->
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">Booking Requests</h5>
-      <% if @booking_requests.any? %>
-        <ul class="list-group">
-          <% @booking_requests.each do |booking| %>
-            <li class="list-group-item">
-              <strong>Apartment:</strong> <%= booking.apartment.title %><br>
-              <strong>Start Date:</strong> <%= booking.start_date.strftime('%d %B %Y') %><br>
-              <strong>End Date:</strong> <%= booking.end_date.strftime('%d %B %Y') %><br>
-              <strong>Requested By:</strong> <%= booking.user.first_name %> <%= booking.user.last_name %><br>
 
-              <!-- Afficher le statut seulement si c'est le locataire qui a fait la demande -->
-              <% if booking.user == current_user %>
-                <strong>Status:</strong>
-                <%
-                  status_class = ""
-                  status_text = ""
+      <div class="profile-box">
+        <h5 class="">Booking Requests</h5>
+        <% if @booking_requests.any? %>
+          <ul class="list-group">
+            <% @booking_requests.each do |booking| %>
+              <li class="list-group-item">
+                <strong>Apartment:</strong> <%= booking.apartment.title %><br>
+                <strong>Start Date:</strong> <%= booking.start_date.strftime('%d %B %Y') %><br>
+                <strong>End Date:</strong> <%= booking.end_date.strftime('%d %B %Y') %><br>
+                <strong>Requested By:</strong> <%= booking.user.first_name %> <%= booking.user.last_name %><br>
+                <!-- Afficher le statut seulement si c'est le locataire qui a fait la demande -->
+                <% if booking.user == current_user %>
+                  <strong>Status:</strong>
+                  <%
+                    status_class = ""
+                    status_text = ""
+                    if booking.status == 'pending'
+                      status_class = "badge bg-warning text-dark"
+                      status_text = "Pending"
+                    elsif booking.status == 'accepted'
+                      status_class = "badge bg-success"
+                      status_text = "Accepted"
+                    elsif booking.status == 'rejected'
+                      status_class = "badge bg-danger"
+                      status_text = "Rejected"
+                    else
+                      status_class = "badge bg-secondary"
+                      status_text = "Unknown"
+                    end
+                  %>
+                  <span class="<%= status_class %>"><%= status_text %></span>
+                <% end %>
+                <!-- Actions disponibles uniquement pour les hôtes -->
+                <% if booking.apartment.user == current_user %>
+                  <%= link_to 'Accept', accept_booking_path(booking), method: :patch, class: 'btn btn-success mt-2', data: { turbo_method: :patch } %>
+                  <%= link_to 'Reject', reject_booking_path(booking), method: :patch, class: 'btn btn-danger mt-2', data: { turbo_method: :patch } %>
+                <% else %>
+                  <p class="text-muted">Waiting for host to respond...</p>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No booking requests at the moment.</p>
+        <% end %>
+      </div>
 
-                  if booking.status == 'pending'
-                    status_class = "badge bg-warning text-dark"
-                    status_text = "Pending"
-                  elsif booking.status == 'accepted'
-                    status_class = "badge bg-success"
-                    status_text = "Accepted"
-                  elsif booking.status == 'rejected'
-                    status_class = "badge bg-danger"
-                    status_text = "Rejected"
-                  else
-                    status_class = "badge bg-secondary"
-                    status_text = "Unknown"
-                  end
-                %>
-                <span class="<%= status_class %>"><%= status_text %></span>
-              <% end %>
-
-              <!-- Actions disponibles uniquement pour les hôtes -->
-              <% if booking.apartment.user == current_user %>
-                <%= link_to 'Accept', accept_booking_path(booking), method: :patch, class: 'btn btn-success mt-2', data: { turbo_method: :patch } %>
-                <%= link_to 'Reject', reject_booking_path(booking), method: :patch, class: 'btn btn-danger mt-2', data: { turbo_method: :patch } %>
-              <% else %>
-                <p class="text-muted">Waiting for host to respond...</p>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No booking requests at the moment.</p>
-      <% end %>
-    </div>
-  </div>
 </div>
