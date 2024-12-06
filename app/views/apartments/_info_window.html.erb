@@ -1,2 +1,8 @@
-<h2><%= apartment.title %></h2>
+<h5><%= apartment.title %></h5>
+<% if apartment.photos.attached? %>
+  <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 100 %>
+<% else %>
+  <p>No photo available</p>
+<% end %>
 <p><%= apartment.address %></p>
+<%=link_to "Visit", apartment_path(apartment), class: "btn btn-dark popup-btn"%>
