@@ -14,32 +14,30 @@
 // MapBox
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
 
-
 body {
-  margin:10px 50px;
+  margin: 10px 50px;
   background-color: white;
 
+  // placeholder
 
-// placeholder
+  /* Pour tous les placeholders */
+  ::placeholder {
+    color: #888888; /* Couleur du placeholder */
+    font-size: 16px; /* Taille de la police */
+    font-style: italic; /* Style en italique */
+    opacity: 0.5; /* Transparence du texte */
+  }
 
-/* Pour tous les placeholders */
-::placeholder {
-  color: #888888; /* Couleur du placeholder */
-  font-size: 16px; /* Taille de la police */
-  font-style: italic; /* Style en italique */
-  opacity: 0.5; /* Transparence du texte */
-}
+  /* Pour cibler spécifiquement le placeholder du champ ayant la classe "form-control" */
+  .form-control::placeholder {
+    color: #555555;
+    font-weight: bold;
+    opacity: 0.5;
+  }
 
-/* Pour cibler spécifiquement le placeholder du champ ayant la classe "form-control" */
-.form-control::placeholder {
-  color: #555555;
-  font-weight: bold;
-  opacity: 0.5;
-}
-
-.form-control {
-  font-family: $body-font; /* Change la police */
-  font-size: 18px; /* Taille de la police */
-  color: #333; /* Couleur du texte */
-
+  .form-control {
+    font-family: $body-font; /* Change la police */
+    font-size: 18px; /* Taille de la police */
+    color: #333; /* Couleur du texte */
+  }
 }
