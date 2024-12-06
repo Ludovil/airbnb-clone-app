@@ -4,6 +4,16 @@ import "controllers";
 import "@popperjs/core";
 import "bootstrap";
 
+import flatpickr from "flatpickr";
+// Initialize Flatpickr on date fields
+document.addEventListener('turbo:load', () => {
+    flatpickr(".date-picker", {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+    });
+});
+
 // app/javascript/application.js
 import { Application } from "@hotwired/stimulus";
 import MapController from "./controllers/map_controller";

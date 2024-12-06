@@ -1,11 +1,20 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!  # Ensure user is logged in
 
+
   def show
     @user = current_user  # Fetch the current logged-in user
-    @upcoming_bookings = current_user.bookings.where('start_date > ?', Time.now).order(:start_date)
-    @previous_bookings = current_user.bookings.where('end_date < ?', Time.now).order(end_date: :desc)
+    @upcoming_bookings = @user.bookings.where(status: 'accepted').where("start_date >= ?", Date.today).order(:start_date)
+    @previous_bookings = @user.bookings.where(status: 'accepted').where("end_date < ?", Date.today).order(:end_date)
     @listed_apartments = current_user.apartments.reverse
+    @bookings = @user.bookings
+    if current_user == @user
+      @booking_requests = Booking.joins(:apartment)
+                                 .where(user_id: @user.id, status: 'pending')  # Réservations demandées par l'utilisateur
+    else
+      @booking_requests = Booking.joins(:apartment)
+                                 .where(apartment: { user_id: @user.id }, status: 'pending')
+    end
   end
 
   def edit
