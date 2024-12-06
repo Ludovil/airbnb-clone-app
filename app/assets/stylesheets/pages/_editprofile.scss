@@ -1,0 +1,68 @@
+.hero-section {
+  background-image: url("https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+.card h1 {
+  font-family: 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: rgb(161, 86, 15);
+  border-color: rgb(161, 86, 15);
+  border-radius: 20px;
+
+}
+
+.btn-secondary {
+  width: fit-content; // Ensures the button matches content width
+  padding: 10px 20px; // Same padding as the green button
+  font-size: 16px; // Matches font size of the green button
+  border-radius: 20px; // Matches the rounded corners of the green button
+  background-color: #6c757d; // Keeps the original gray color
+  color: #ffffff; // Ensure text is visible
+  border: none; // Optional: Remove border for consistenc
+  margin-top: 20px; // Adds space above the button
+  margin-bottom: 20px; // Adds space below the button (optional)
+  margin-left: auto; // Ensures the button is properly spaced on the left
+  margin-right: auto; // Centers the button horizontally, if needed
+  padding: 10px 20px; // Adjusts the button's internal spacing for better sizing
+  display: block; // Ensures the button spans its space cleanly
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 100px;
+}
+
+.btn-success {
+  background-color: rgb(161, 86, 15); // Keep the button's base color
+  color: #fff; // Ensure the text color remains visible
+  border: none; // Remove any border
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: rgb(161, 86, 15); // Prevent color change on hover by keeping it the same
+  color: #fff; // Ensure text color does not change
+}
