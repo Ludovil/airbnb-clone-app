@@ -40,25 +40,24 @@
 <section class="container my-5">
   <h2 class="text-center">Popular Destinations</h2>
   <p class="text-center">Discover our highly qualitative selection of flats</p>
-  <div class="row">
-    <% @apartments.each do |apartment| %>
+<div class="row">
+    <% @apartments.geocoded.each do |apartment| %>
       <div class="col-md-4 mb-4">
+
         <div class="card">
-          <div class="card-content">
-          <div class="card-photo">
-          <% if apartment.photos.attached? %>
-            <%= link_to apartment_path(apartment) do %>
-              <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
-            <% end %>
-          <% else %>
-            <p>No photos uploaded.</p>
-          <% end %>
-          </div>
+          <%# <img src="<%= @apartment.photos %> <%#" class="card-img-top" alt="<%= apartment.address %>
+
+        <% if apartment.photos.attached? %>
+          <%= image_tag apartment.photos.first, alt: "Apartment photo", height: 300 %>
+        <% else %>
+          <p>No photos uploaded.</p>
+        <% end %>
+
           <div class="card-body">
             <h5 class="card-title"><%= apartment.address %></h5>
-          </div>
-          </div>
             <%# <p class="card-text">From $<%= apartment.price> per night</p> %>
+            <%= link_to 'View Details', apartment_path(apartment), class: 'btn btn-primary' %>
+          </div>
         </div>
       </div>
     <% end %>
