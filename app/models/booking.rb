@@ -1,11 +1,13 @@
 class Booking < ApplicationRecord
   belongs_to :apartment
   belongs_to :user
+
   validates :start_date, :end_date, presence: true
   validate :start_date_before_end_date
   validate :no_overlapping_bookings
+  validates :status, inclusion: { in: ['pending', 'accepted', 'rejected'] }
 
-  enum status: { pending: 'pending', accepted: 'accepted', refused: 'refused' }
+  enum status: { pending: 'pending', accepted: 'accepted', rejected: 'rejected' }
 
   after_initialize :set_default_status, if: :new_record?
 

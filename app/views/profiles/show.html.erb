@@ -73,3 +73,55 @@
     <% end %>
   </div>
 </div>
+<!-- Booking Requests Section -->
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Booking Requests</h5>
+    <% if @booking_requests.any? %>
+      <ul class="list-group">
+        <% @booking_requests.each do |booking| %>
+          <li class="list-group-item">
+            <strong>Apartment:</strong> <%= booking.apartment.title %><br>
+            <strong>Start Date:</strong> <%= booking.start_date.strftime('%d %B %Y') %><br>
+            <strong>End Date:</strong> <%= booking.end_date.strftime('%d %B %Y') %><br>
+            <strong>Requested By:</strong> <%= booking.user.first_name %> <%= booking.user.last_name %><br>
+
+            <!-- Afficher le statut seulement si c'est le locataire qui a fait la demande -->
+            <% if booking.user == current_user %>
+              <strong>Status:</strong>
+              <%
+                status_class = ""
+                status_text = ""
+
+                if booking.status == 'pending'
+                  status_class = "badge bg-warning text-dark"
+                  status_text = "Pending"
+                elsif booking.status == 'accepted'
+                  status_class = "badge bg-success"
+                  status_text = "Accepted"
+                elsif booking.status == 'rejected'
+                  status_class = "badge bg-danger"
+                  status_text = "Rejected"
+                else
+                  status_class = "badge bg-secondary"
+                  status_text = "Unknown"
+                end
+              %>
+              <span class="<%= status_class %>"><%= status_text %></span>
+            <% end %>
+
+            <!-- Actions disponibles uniquement pour les hôtes -->
+            <% if booking.apartment.user == current_user %>
+              <%= link_to 'Accept', accept_booking_path(booking), method: :patch, class: 'btn btn-success mt-2', data: { turbo_method: :patch } %>
+              <%= link_to 'Reject', reject_booking_path(booking), method: :patch, class: 'btn btn-danger mt-2', data: { turbo_method: :patch } %>
+            <% else %>
+              <p class="text-muted">Waiting for host to respond...</p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No booking requests at the moment.</p>
+    <% end %>
+  </div>
+</div>
