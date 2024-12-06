@@ -5,19 +5,21 @@
   background-position: center;
   border-radius: 50px;
   background-size: cover;
-  padding:60px;
+  padding: 60px;
   margin: 0px 50px;
   background-color: rgba(42, 42, 42, 0.5);
+  border-radius: 30px;
 }
 
 .hero-section .form-control {
-  border-radius : 20px 0px 0px 20px;
+  border-radius: 20px 0px 0px 20px;
 }
 
 .hero-section .btn {
-  border-radius: 20px 0px 0px 20px;
-  background-color:rgb(161, 86, 15);
+  border-radius: 0px 20px 20px 0px;
+  background-color: rgb(161, 86, 15);
   border-color: rgb(161, 86, 15);
+  opacity: 0.8;
 }
 
 .container .btn-primary {
@@ -26,18 +28,20 @@
   border-radius: 0px 20px 20px 0px;
 }
 
-
 .word-highlight{
   color: rgb(161, 86, 15);
+  border-radius: 20px 20px 20px 20px;
+  opacity: 0.8;
+
 }
 
- h1 {
-  font-family: 'Times New Roman', Times, serif;
- }
+h1 {
+  font-family: "Times New Roman", Times, serif;
+}
 h2 {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
- p {
+p {
   font-family: sans-serif;
- }
+}
