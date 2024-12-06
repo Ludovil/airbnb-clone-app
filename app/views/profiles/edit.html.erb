@@ -1,7 +1,7 @@
 <h1 class="text-center mb-4">Edit Your Profile</h1>
 
-<div class="card">
-  <div class="card-body">
+<div class="card-edit">
+  <div class="card-body-edit">
     <%= simple_form_for @user, url: profile_path, html: { class: 'form-horizontal' } do |f| %>
       <div class="form-group">
         <%= f.input :first_name, label: 'First Name', input_html: { class: 'form-control' } %>
@@ -16,10 +16,10 @@
       </div>
 
       <div class="form-group">
-        <%= f.submit 'Update Profile', class: 'btn btn-success' %>
+        <%= f.submit 'Update Profile', class: 'btn btn-success-edit' %>
       </div>
     <% end %>
   </div>
 </div>
 
-<%= link_to 'Cancel', profile_path, class: 'btn btn-secondary mt-3' %>
+<%= link_to 'Cancel', profile_path, class: 'btn btn-secondary-edit mt-3' %>
